@@ -1,5 +1,4 @@
-class connectfour {
-    constructor() {
-        alert('hello');
-    }
-}
+
+$(document).ready(function(){
+    const board = new Board('#board');
+})
