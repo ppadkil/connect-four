@@ -50,3 +50,16 @@
     background-color: whitesmoke;
     margin: 5px;
   }
+
+  .player1-color {
+    background-color: greenyellow;
+  }
+
+  .player2-color {
+    background-color: salmon;
+  }
+
+  .playerName {
+    margin-bottom: 10px;
+    text-align: center;
+  }
