@@ -46,6 +46,9 @@ class Board {
         }
 
         $board.on('click', '.col.empty', function () {
+            if (that.isGameOver) {
+                return;
+            }
             const currentColumn = $(this).data('col');
             const $emptyCell = getEmptyCell(currentColumn);
             $emptyCell.removeClass('empty');
@@ -82,7 +85,7 @@ class Board {
             // TODO: instead of $getCell which is more on DOM manipulation, 
             // this logic could be moved to a separate class to have, filled positions in a 2-dimensional array filledPositions[rowNo, colNo] = COLORS.RED
             // Then using jquery .index(column) and .index(parent).column
-            while (rowNo > 0 && rowNo < that.totalRows && colNo > 0 && colNo < that.totalColumns
+            while (rowNo >= 0 && rowNo < that.totalRows && colNo >= 0 && colNo < that.totalColumns
                 && $next.data('player') === that.currentPlayer) {
                 total++;
                 rowNo += direction.row;
@@ -106,7 +109,14 @@ class Board {
         function checkHorizontals() {
             return checkResult({ row: 0, column: -1 }, { row: 0, column: 1 });
         }
+
+        function checkDiagonalsBottomToTop() {
+            return checkResult({ row: 1, column: -1 }, { row: 1, column: 1 });
+        }
+        function checkDiagonalsTopToBottom() {
+            return checkResult({ i: 1, j: 1 }, { i: -1, j: -1 });
+        }
        
-        return checkVerticals() || checkHorizontals(); 
+        return checkVerticals() || checkHorizontals() || checkDiagonalsBottomToTop() || checkDiagonalsTopToBottom();
     }
 }
