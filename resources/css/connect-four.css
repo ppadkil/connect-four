@@ -56,3 +56,15 @@
     text-align: center;
     font-size: 15px;
   }
+
+  .hidden {
+    display: none;
+  }
+
+  .button {
+    justify-content: center;
+    background-color: #5BB73B;
+    color: white;
+    flex-wrap: nowrap;
+    margin-bottom: 5px;
+  }

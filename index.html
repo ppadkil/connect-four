@@ -5,9 +5,8 @@
     <title>Connect Four For PTC</title>
     <link href="./resources/css/connect-four.css" type="text/css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Load Babel for IE11-->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.18.1/babel.min.js"></script> -->
     <script src="./src/connect-four.js"></script>
+    <script src="./src/boardState.js"></script>
     <script src="./src/board.js"></script>
 </head>
 
@@ -15,8 +14,12 @@
     <div class="parent">
         <h1 class="header">Connect Four For PTC</h1>
         <img class="person" src="./resources/images/person.jpg" alt="Current Player" />
-        <h1 class="text">In action:<span id="currentPlayer">Player 1</span></h1>
+        <h1 class="text">In action: <span id="currentPlayerAction">Player 1</span></h1>
         <h1 class="text"><span>Note: Please select on either row or column to drop your color</span></h1>
+        <h1 class="text hidden" id="gameStatus">Game Over!! <span id="currentPlayerStatus">Player
+                1</span><span> won!!</span></h1>
+        <div><button class="button" id="startGame">Start Over</button></div>
+
         <div id="board">
         </div>
     </div>
