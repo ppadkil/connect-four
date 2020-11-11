@@ -18,6 +18,7 @@ class Board {
 
     // Create a board with defined no of rows and columns using global totalRows & totalColumns variables.
     createBoard() {
+        this.isGameOver = false;
         const $board = $(this.board);
         for (let row = 0; row < this.totalRows; row++) {
             const $row = $('<div>').addClass('row');
@@ -62,13 +63,23 @@ class Board {
             if (winner) {
                 that.isGameOver = true;
                 alert(`Game won by ${winner} !!`);
-                return;
+                 // Reset board for a new game and return
+                 that.resetBoard();
+                 return;
             }
 
             that.currentPlayer = (that.currentPlayer === that.playerOne) ? that.playerTwo : that.playerOne;
             $('#currentPlayer').text(that.currentPlayer);
             console.log('Player Changed = ', that.currentPlayer);
         })
+    }
+
+    resetBoard() {
+        let that = this;
+        that.currentPlayer = that.playerOne;
+        const $board = $(that.board);
+        $board.empty();
+        that.createBoard();
     }
 
     checkWinner(row, column) {

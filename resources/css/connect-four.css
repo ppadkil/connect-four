@@ -19,7 +19,7 @@
     flex-wrap: nowrap;
     height: 40px;
   }
-  
+
   .person {
       width: 50px;
       height: 50px;
@@ -37,6 +37,10 @@
     display: inline-block;
     background-color: whitesmoke;
     margin: 5px;
+  }
+
+  .row {
+    display: flex;
   }
 
   .player1-color {
