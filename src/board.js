@@ -37,7 +37,6 @@ class Board {
         let that = this;
         function getEmptyCell(column) {
             const cells = $(`.col[data-col='${column}']`);
-            console.log($(`.col[data-col='${column}']`));
             for (let i = cells.length - 1; i >= 0; i--) {
                 const $cell = $(cells[i]);
                 if ($cell.hasClass('empty')) {
@@ -58,19 +57,20 @@ class Board {
             $emptyCell.addClass(that.playerOneColor) : $emptyCell.addClass(that.playerTwoColor);
             $emptyCell.data('player', that.currentPlayer);
 
-            // Find winner - core logic
+            // Find winner - core logic..settimeout added so that last cell gets time to render.
+            setTimeout(() => {
             const winner = that.checkWinner($emptyCell.data('row'), $emptyCell.data('col'));
             if (winner) {
                 that.isGameOver = true;
                 alert(`Game won by ${winner} !!`);
-                 // Reset board for a new game and return
-                 that.resetBoard();
-                 return;
+                // Reset board for a new game and return
+                that.resetBoard();
+                return;
             }
-
             that.currentPlayer = (that.currentPlayer === that.playerOne) ? that.playerTwo : that.playerOne;
             $('#currentPlayer').text(that.currentPlayer);
-            console.log('Player Changed = ', that.currentPlayer);
+            }, 0);
+
         })
     }
 
