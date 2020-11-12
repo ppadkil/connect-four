@@ -35,6 +35,7 @@ class Board {
         $board.empty();
         $("#gameStatus").addClass('hidden');
         this.createBoard();
+        $('#currentPlayerAction').html(`Player ${this.boardState.currentColor}`);
     }
 
     handleClickEvents() {
