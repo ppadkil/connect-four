@@ -55,6 +55,9 @@ class BoardState {
                 if (that.boardState[rowNo] && that.boardState[rowNo][colNo]) {
                     color = that.boardState[rowNo][colNo];
                 }
+                else {
+                    color = 0;
+                }
             }
 
             return total;
